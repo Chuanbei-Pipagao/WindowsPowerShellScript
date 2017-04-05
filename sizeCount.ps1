@@ -1,4 +1,5 @@
 $startFolder = "$args"
+#powershellscritpt
 if("$args" -eq "")
 {
 	$startFolder = ".\"
