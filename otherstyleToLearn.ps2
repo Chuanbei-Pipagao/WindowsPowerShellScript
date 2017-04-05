@@ -1,0 +1,15 @@
+$global:CurrentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent()  
+  
+function prompt  
+{  
+    $host.ui.rawui.WindowTitle = "Welcome Anders Back  ---  " + "PowerShell" + " " + $Host.Version + "  Line: " + $host.UI.RawUI.CursorPosition.Y `  
+    + "  ---  Current Location: " + $(Get-Location) + "  ---  RuningTime: " + ((((Get-Date)-(Get-Process -id $pid).starttime) -as [string]) -split '\.')[0] `  
+    + "  ---  Memory Utilization: " + $('{0:n2}' -f ([double](Get-Process -Id $pid).WorkingSet/1MB)) + "MB"  
+    $Line=$host.UI.RawUI.CursorPosition.Y  
+    Write-Host ("[^_^]") -NoNewline -ForegroundColor Green  
+    Write-Host ("PS") -NoNewline -ForegroundColor Red  
+    Write-Host "[$Line]>"  -NoNewline -ForegroundColor Yellow  
+    return " "  
+}
+
+#http://blog.csdn.net/itanders/article/details/32318553
